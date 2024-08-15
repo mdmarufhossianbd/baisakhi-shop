@@ -32,7 +32,7 @@ const Register = () => {
         })
     })
   };
-  
+
   return (
     <div className="flex min-h-screen border bg-[#f5f8fe]">
       <div className="w-full">
