@@ -6,8 +6,13 @@ import authImage from "../../assets/auth-page.jpg";
 import { AuthContext } from "../../provider/authProvider";
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {register, updateUserProfile, setReload} = useContext(AuthContext);
+  const {register, updateUserProfile, setReload, user} = useContext(AuthContext);
   const navigate = useNavigate()
+
+  // user checking
+  if(user){
+    navigate('/')
+  }
 
   const handleRegister = (e) => {
     e.preventDefault();

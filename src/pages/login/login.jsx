@@ -10,10 +10,14 @@ import { AuthContext } from "../../provider/authProvider";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { login } = useContext(AuthContext);
+  const { login, user } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider;
   const navigate = useNavigate();
 
+  // user checking
+  if(user){
+    navigate('/')
+  }
   // login with email and password
   const handleLogin = (e) => {
     e.preventDefault();
