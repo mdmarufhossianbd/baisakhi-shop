@@ -17,7 +17,7 @@ const Navber = () => {
   }
   
   return (
-    <div className="sticky top-0 bg-white z-10">
+    <div className="sticky top-0 bg-white z-10 border-b border-[#ef8121]">
       <div className="navbar max-w-7xl mx-auto">
         <div className="navbar-start">          
           {/* add logo here */}

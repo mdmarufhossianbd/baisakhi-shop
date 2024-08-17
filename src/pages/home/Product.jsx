@@ -14,13 +14,15 @@ const Product = () => {
     const [maxPrice, setMaxPrice] = useState('');
     const [sort, setSort] = useState('');
     const [categories] = useCategory();
-    const [brands] = useBrands();
+    const [brands, isLoading] = useBrands();
+    const [loading, setLoading] = useState(false);
 
 
     useEffect(() => {
         const fetchProducts = async () => {
+            setLoading(true); // Start loading
             try {
-                const response = await axios.get('http://localhost:5000/products', {
+                const response = await axios.get('https://baishakhi-shop-backend.vercel.app/products', {
                     params: {
                         keyword,
                         page,
@@ -35,14 +37,24 @@ const Product = () => {
                 setTotalPages(response.data.totalPages);
             } catch (error) {
                 console.error('Error fetching products:', error);
+            } finally {
+                setLoading(false); // Stop loading
             }
         };
 
         fetchProducts();
     }, [keyword, page, brand, category, minPrice, maxPrice, sort]);
+    // setLoading(false)
+    if(isLoading){
+        return (
+            <div className="text-center py-[20%]">
+        <span className=" loading loading-dots loading-lg"></span>
+      </div>)
+        
+    }
 
     return (
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 px-2">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 px-2 min-h-screen">
             <div className="lg:max-w-[300px] w-full md:max-w-[250px] flex flex-col gap-3">
                 <input
                     type="text"
@@ -90,7 +102,11 @@ const Product = () => {
                     />
                 </div>
             </div>
-            <div>
+            {
+                loading ? <div className="flex justify-center w-full">
+                <span className=" loading loading-dots loading-lg"></span>
+              </div> :
+                <div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
                     {products.map((product) => (
                         <div key={product._id} className="rounded-md flex flex-col shadow-md ">
@@ -111,6 +127,7 @@ const Product = () => {
                     <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="bg-[#ef8121] px-5 py-2 text-white rounded-r-full mr-2 disabled:cursor-not-allowed">Next</button>
                 </div>
             </div>
+            }
         </div>
     );
 };

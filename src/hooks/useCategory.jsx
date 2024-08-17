@@ -5,7 +5,7 @@ const useCategory = () => {
     const {data : categories = [], isLoading, refetch} = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:5000/categoires')
+            const res = await axios.get('https://baishakhi-shop-backend.vercel.app/categoires')
             return res.data;
         }
     });

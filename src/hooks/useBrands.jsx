@@ -5,7 +5,7 @@ const useBrands = () => {
     const {data : brands = [], isLoading, refetch} = useQuery({
         queryKey: ['brands'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:5000/brands')
+            const res = await axios.get('https://baishakhi-shop-backend.vercel.app/brands')
             return res.data
         }
     })
