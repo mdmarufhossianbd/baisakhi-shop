@@ -51,7 +51,7 @@ const Login = () => {
   }
   return (
     <div className="flex min-h-screen border bg-[#f5f8fe]">
-      <div className="w-full">
+      <div className="w-full hidden md:block">
         <img
           className="w-full min-h-full object-cover"
           src={authImage}
@@ -59,13 +59,13 @@ const Login = () => {
         />
       </div>
       <div className="flex flex-col items-center justify-center w-full">
-        <h2 className="text-4xl font-semibold mb-5">
+        <h2 className="text-4xl font-semibold mb-5 text-center">
           Welcome to Baishakhi Shop
         </h2>
         <h3 className="text-4xl font-semibold">Login Now</h3>
         <form
           onSubmit={handleLogin}
-          className="md:w-1/2 w-full flex flex-col gap-2"
+          className="md:w-3/4 w-full flex flex-col gap-2 my-5 px-3"
         >
           <div className="flex flex-col w-full">
             <label className="font-medium">Your Email</label>
@@ -105,7 +105,7 @@ const Login = () => {
             />
           </div>
         </form>
-        <div className="mt-10">
+        <div>
           <p className="my-3">
             Don&apos;t have an account?{" "}
             <Link
