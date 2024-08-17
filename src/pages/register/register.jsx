@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authImage from "../../assets/auth-page.jpg";
 import { AuthContext } from "../../provider/authProvider";
 const Register = () => {
@@ -35,7 +35,7 @@ const Register = () => {
 
   return (
     <div className="flex min-h-screen border bg-[#f5f8fe]">
-      <div className="w-full">
+      <div className="w-full hidden md:block">
         <img
           className="w-full min-h-full object-cover"
           src={authImage}
@@ -43,13 +43,13 @@ const Register = () => {
         />
       </div>
       <div className="flex flex-col items-center justify-center w-full">
-        <h2 className="text-4xl font-semibold mb-5">
+        <h2 className="lg:text-4xl text-3xl font-semibold mb-5 px-2 text-center">
           Welcome to Baishakhi Shop
         </h2>
-        <h3 className="text-4xl font-semibold">Register Now</h3>
+        <h3 className="text-4xl font-semibold mb-5">Register Now</h3>
         <form
           onSubmit={handleRegister}
-          className="md:w-1/2 w-full flex flex-col gap-2"
+          className="lg:w-3/4 w-full flex flex-col gap-2 px-4"
         >
           <div className="flex flex-col w-full">
             <label className="font-medium">Your Name</label>
@@ -99,6 +99,7 @@ const Register = () => {
             />
           </div>
         </form>
+          <p className="mt-5">Already have an account? <Link to={'/login'} className="font-medium text-[#ef8121] underline">Login</Link></p>
       </div>
       <Toaster position="top-right" reverseOrder={false} />
     </div>

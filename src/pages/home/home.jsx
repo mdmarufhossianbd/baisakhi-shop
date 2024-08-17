@@ -1,7 +1,11 @@
+import Product from "./Product";
+
 const Home = () => {
     return (
-        <div>
-            <button className="btn">Button</button>
+        <div className="bg-[#f5f8fe] py-10">
+            <Product></Product>
+            {/* <ProductList></ProductList> */}
+
         </div>
     );
 };
